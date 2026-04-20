@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniFinder | AI-Powered Education & Career Guidance</title>
+    <meta name="description" content="UniFinder: AI-Powered Personalized Education and Career Path Guidance System for Sri Lankan Students. Undergraduate research project 25-26J-494 at SLIIT.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">UniFinder</span>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#domain">Domain</a></li>
+                <li><a href="#milestones">Milestones</a></li>
+                <li><a href="#documents">Documents</a></li>
+                <li><a href="#presentations">Presentations</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="nav-search">
+                    <input type="text" id="searchInput" placeholder="Search topic..." autocomplete="off">
+                    <button id="searchBtn" aria-label="Search">🔍</button>
+                    <div id="searchResults" class="search-results"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- 1. HOME SECTION -->
+        <section id="home" class="section hero-section">
+            <div class="hero-bg">
+                <!-- SVG Neural Network animated via CSS -->
+                <svg class="neural-network-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                    <defs>
+                        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#1B3A6B" stop-opacity="0.3" />
+                            <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.5" />
+                            <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.3" />
+                        </linearGradient>
+                    </defs>
+                    <g class="network-nodes" id="network-nodes"></g>
+                </svg>
+            </div>
+            <div class="container hero-content reveal">
+                <h1 class="hero-title">UniFinder</h1>
+                <h2 class="hero-subtitle">AI-Powered Personalized Education & Career Path Guidance System for Sri Lankan Students</h2>
+                <p class="hero-tagline">
+                    A modular intelligent platform helping Sri Lankan students navigate degree selection, financial aid, scholarships, and career planning — powered by machine learning and explainable AI.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#domain" class="btn btn-primary">Explore the Research</a>
+                    <a href="#documents" class="btn btn-secondary">View Documents</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">350,000+</div>
+                        <div class="stat-label">A/L Candidates Annually</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">44,000</div>
+                        <div class="stat-label">State University Seats</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">85%+</div>
+                        <div class="stat-label">Target Rec. Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">400,000+</div>
+                        <div class="stat-label">Potential Users Annually</div>
+                    </div>
+                </div>
+
+                <div class="system-overview">
+                    <h3 class="section-subheading">System Overview</h3>
+                    <div class="module-cards">
+                        <div class="module-card color-purple">
+                            <div class="module-icon">🎯</div>
+                            <h4>Degree Recommendation System</h4>
+                            <p class="member-name">Kaweeshwara K.A.Y.P</p>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="module-card color-green">
+                            <div class="module-icon">💰</div>
+                            <h4>Student Budget Optimizer</h4>
+                            <p class="member-name">Dilshan W.P.S.S</p>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="module-card color-blue">
+                            <div class="module-icon">🏆</div>
+                            <h4>Scholarship & Loan Matcher</h4>
+                            <p class="member-name">Hettiarachchi H.D.R.T</p>
+                            <div class="card-glow"></div>
+                        </div>
+                        <div class="module-card color-orange">
+                            <div class="module-icon">📈</div>
+                            <h4>Career Outcome Predictor</h4>
+                            <p class="member-name">Siriwardana N.D.V.S</p>
+                            <div class="card-glow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="whats-different">
+                    <h3 class="section-subheading">What's Different About UniFinder</h3>
+                    <div class="diff-grid">
+                        <div class="diff-item">
+                            <div class="diff-icon">✅</div>
+                            <h5>What Exists</h5>
+                            <p>Global tools, not localized, limited explainability, post-enrollment focus.</p>
+                        </div>
+                        <div class="diff-item">
+                            <div class="diff-icon">⚠️</div>
+                            <h5>Shortcomings</h5>
+                            <p>Not tuned to local Z-scores/streams, opaque recommendations, siloed tools.</p>
+                        </div>
+                        <div class="diff-item">
+                            <div class="diff-icon">💡</div>
+                            <h5>Our Approach</h5>
+                            <p>Modular platform, 4 integrated AI components, unified experience.</p>
+                        </div>
+                        <div class="diff-item">
+                            <div class="diff-icon">⭐</div>
+                            <h5>What's Different</h5>
+                            <p>Local rules, plain-language explanations, unified academic + financial + career decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DOMAIN SECTION -->
+        <section id="domain" class="section">
+            <div class="container reveal">
+                <h2 class="section-title">Research Domain</h2>
+                
+                <div class="tabs-container">
+                    <div class="tab-controls">
+                        <button class="tab-btn active" data-target="tab-background">Background</button>
+                        <button class="tab-btn" data-target="tab-gap">Research Gap</button>
+                        <button class="tab-btn" data-target="tab-problem">Problem & Objectives</button>
+                        <button class="tab-btn" data-target="tab-methodology">Methodology</button>
+                        <button class="tab-btn" data-target="tab-architecture">Architecture</button>
+                        <button class="tab-btn" data-target="tab-tech">Technologies</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <!-- Background -->
+                        <div id="tab-background" class="tab-pane active">
+                            <div class="text-content box-panel">
+                                <h3>Background / Literature Survey</h3>
+                                <ul>
+                                    <li><strong>~350,000 A/L candidates</strong> annually, but only <strong>~44,000 state university seats</strong> available. 300,000+ seek alternatives without structured support.</li>
+                                    <li>Living costs have risen ~15% in 5 years; graduates increasingly face labour-market mismatches.</li>
+                                    <li><strong>Existing platforms:</strong>
+                                        <ul>
+                                            <li><em>CareerMe:</em> Psychometric only, no funding linkages.</li>
+                                            <li><em>PickACourse:</em> 300+ institutes listed but lacks AI matching based on specific student profiles.</li>
+                                            <li><em>Coursenet / MOE Portals:</em> Static portals acting as mere directories.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Missing elements:</strong> None offer fraud detection, explainable AI, centralized local scholarship matching, or fully integrated academic-financial-career guidance.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Research Gap -->
+                        <div id="tab-gap" class="tab-pane">
+                            <div class="box-panel overflow-x-auto">
+                                <h3>Research Gap Analysis</h3>
+                                <table class="comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Feature</th>
+                                            <th>Gov. UGC Listings</th>
+                                            <th>Bank Portals</th>
+                                            <th>International Sites</th>
+                                            <th>Proposed UniFinder</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Multi-source Integration</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="check">✓</td>
+                                            <td class="check">✓</td>
+                                        </tr>
+                                        <tr>
+                                            <td>AI-based Matching</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="check">✓</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fraud Detection</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="check">✓</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Eligibility Prediction</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="check">✓</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alerts & Notifications</td>
+                                            <td class="cross">✗</td>
+                                            <td class="cross">✗</td>
+                                            <td class="partial">Limited</td>
+                                            <td class="check">✓</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Loan Options</td>
+                                            <td class="cross">✗</td>
+                                            <td class="check">✓</td>
+                                            <td class="cross">✗</td>
+                                            <td class="check">✓</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div class="gap-cards">
+                                    <span class="badge">Information Fragmentation</span>
+                                    <span class="badge">Lack of Personalization</span>
+                                    <span class="badge">Limited Local Context</span>
+                                    <span class="badge">No Intelligent Matching</span>
+                                    <span class="badge">No Explainable Recommendations</span>
+                                    <span class="badge">No Gap Analysis</span>
+                                    <span class="badge">Inadequate Fraud Prevention</span>
+                                    <span class="badge">Poor Application Tracking</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Problem & Objectives -->
+                        <div id="tab-problem" class="tab-pane">
+                            <div class="grid-2-col">
+                                <div class="box-panel">
+                                    <h3>Research Problem</h3>
+                                    <p>The absence of centralized AI-powered guidance creates severe barriers across academic and career decision-making processes for Sri Lankan students.</p>
+                                    <div class="problem-list">
+                                        <div class="problem-item"><span>1</span> Discovery Challenge</div>
+                                        <div class="problem-item"><span>2</span> Matching Inefficiency</div>
+                                        <div class="problem-item"><span>3</span> Information Overload</div>
+                                        <div class="problem-item"><span>4</span> Fraud Vulnerability</div>
+                                        <div class="problem-item"><span>5</span> Inequitable Access</div>
+                                        <div class="problem-item"><span>6</span> Application Management Complexity</div>
+                                    </div>
+                                </div>
+                                <div class="box-panel">
+                                    <h3>Research Objectives</h3>
+                                    <ul class="styled-list">
+                                        <li><strong>1.</strong> Develop Comprehensive Data Aggregation System</li>
+                                        <li><strong>2.</strong> Implement Hybrid AI Recommendation Engine</li>
+                                        <li><strong>3.</strong> Develop Explainable AI Engine with Transparency</li>
+                                        <li><strong>4.</strong> Create Intelligent Fraud Detection System (Risk scoring 0–100)</li>
+                                        <li><strong>5.</strong> Build Comprehensive Notification & Tracking System</li>
+                                        <li><strong>6.</strong> Establish Performance Monitoring and Analytics Framework</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Methodology -->
+                        <div id="tab-methodology" class="tab-pane">
+                            <h3 style="margin-bottom: 20px;">Methodology by Component</h3>
+                            
+                            <div class="sub-tabs-container">
+                                <div class="sub-tab-controls">
+                                    <button class="sub-tab-btn active color-purple" data-subtarget="member1">Degree Rec.</button>
+                                    <button class="sub-tab-btn color-green" data-subtarget="member2">Budget Opt.</button>
+                                    <button class="sub-tab-btn color-blue" data-subtarget="member3">Scholarship & Loan</button>
+                                    <button class="sub-tab-btn color-orange" data-subtarget="member4">Career Predictor</button>
+                                </div>
+                                
+                                <!-- Member 1 -->
+                                <div id="member1" class="sub-tab-pane active">
+                                    <div class="box-panel border-purple">
+                                        <h4>Degree Recommendation System <span>(Kaweeshwara — IT22641960)</span></h4>
+                                        <div class="grid-2-col">
+                                            <div>
+                                                <h5>Sub-problem & Goals</h5>
+                                                <p>District-based Z-score cutoffs vary annually; strict UGC eligibility rules; lack of personalized interest-aligned guidance; static filtering without explainability.</p>
+                                                <h5>Core Solution Approach</h5>
+                                                <ul class="bullet-list">
+                                                    <li><strong>Eligibility Enforcement:</strong> Applies UGC rules strictly via Rule-based AI.</li>
+                                                    <li><strong>Semantic Interest Matching:</strong> Pre-trained Sentence-BERT model to understand student interests over text input.</li>
+                                                    <li><strong>Hybrid Ranking Mechanism:</strong> Combines eligibility status + interest similarity.</li>
+                                                    <li><strong>Explainable Decision Flow:</strong> Each recommendation includes plain-language explanations.</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h5>Performance Testing Results</h5>
+                                                <table class="results-table table-purple">
+                                                    <tr>
+                                                        <th>Metric</th>
+                                                        <th>Before</th>
+                                                        <th>After</th>
+                                                        <th>Improvement</th>
+                                                    </tr>
+                                                    <tr><td>Scenarios Working</td><td>40%</td><td>90%</td><td class="positive">+50%</td></tr>
+                                                    <tr><td>Test Cases Passing</td><td>30%</td><td>90%</td><td class="positive">+60%</td></tr>
+                                                    <tr><td>Avg. Courses (Scenario 1)</td><td>0.75</td><td>15.75</td><td class="positive">+2000%</td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Member 2 -->
+                                <div id="member2" class="sub-tab-pane">
+                                    <div class="box-panel border-green">
+                                        <h4>Student Budget Optimizer <span>(Dilshan — IT22347862)</span></h4>
+                                        <p><em>An AI-driven financial intelligence system providing predictive budgeting and localized savings strategies for Sri Lankan university students.</em></p>
+                                        <div class="grid-2-col" style="margin-top: 15px;">
+                                            <div>
+                                                <h5>Research Gap Addressed</h5>
+                                                <ul class="bullet-list">
+                                                    <li><strong>Currency/Location Gap:</strong> Existing apps ignore local costs in districts like Kandy or Jaffna.</li>
+                                                    <li><strong>Estimation Gap:</strong> 62% of students cannot estimate monthly expenses accurately.</li>
+                                                    <li><strong>Action Gap:</strong> Traditional tools lack actionable LKR-specific advice.</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h5>Solution Architecture</h5>
+                                                <ul class="bullet-list">
+                                                    <li><strong>Rule-Based Engine:</strong> 130,000+ local price records evaluated.</li>
+                                                    <li><strong>Machine Learning:</strong> Gradient Boosting (86.89% accuracy) for predictions; Logistic Regression for financial risk.</li>
+                                                    <li><strong>Gen-AI:</strong> Gemini 2.0 Flash for conversational budget coaching.</li>
+                                                </ul>
+                                                <p style="margin-top: 10px;"><strong>Impact:</strong> Identifies LKR 3,000–8,000 avg. monthly savings.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Member 3 (Primary) -->
+                                <div id="member3" class="sub-tab-pane">
+                                    <div class="box-panel border-blue">
+                                        <h4>Scholarship & Financial Aid Matcher <span>(Hettiarachchi — IT22627650)</span></h4>
+                                        
+                                        <div class="grid-3-col">
+                                            <div class="col-span-2">
+                                                <h5>Problem & Solution</h5>
+                                                <p>Information is scattered. Manual searching leads to missed opportunities. No centralized eligibility-based system exists. The system collects academic/financial details, automatically filters/matches opportunities, and ranks them with clear eligibility explanations.</p>
+                                                
+                                                <h5>Technology & Architecture</h5>
+                                                <p>Built with React, Node.js, Python (FastAPI), Scikit-learn, and Selenium. Architecture integrates a REST API with a FastAPI ML Service using TF-IDF + KNN Similarity alongside a Rule-based Eligibility Engine.</p>
+                                            </div>
+                                            <div class="chart-container">
+                                                <h5>Hybrid Model Approach</h5>
+                                                <div class="donut-chart-container">
+                                                    <!-- CSS Donut Chart -->
+                                                    <div class="css-donut" style="--val1: 40; --val2: 35; --val3: 25; --color1: #3B82F6; --color2: #06B6D4; --color3: #1B3A6B;"></div>
+                                                    <div class="donut-legend">
+                                                        <div><span class="dot" style="background:#3B82F6"></span> 40% Content-based</div>
+                                                        <div><span class="dot" style="background:#06B6D4"></span> 35% Collaborative</div>
+                                                        <div><span class="dot" style="background:#1B3A6B"></span> 25% Knowledge-based</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top:15px; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px;">
+                                            <strong>Expected Outcomes:</strong> 85%+ recommendation accuracy | 20% increase in scholarship success rates | 70% reduction in search time.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Member 4 -->
+                                <div id="member4" class="sub-tab-pane">
+                                    <div class="box-panel border-orange">
+                                        <h4>Career Outcome Predictor <span>(Siriwardana — IT22627100)</span></h4>
+                                        <p><em>Career Pathway, Skill Gap & Job Match Recommender for IT students.</em></p>
+                                        <div class="grid-2-col" style="margin-top: 15px;">
+                                            <div>
+                                                <h5>Core Functionality</h5>
+                                                <ul class="bullet-list">
+                                                    <li>Job-role suitability analysis and skill gap identification.</li>
+                                                    <li>Uses predefined static career ladders validated by real job market data.</li>
+                                                    <li>TF-IDF–based role–skill profiles reflecting industry expectations.</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h5>User Experience & Design</h5>
+                                                <ul class="bullet-list">
+                                                    <li>Clear visual representations of missing skills for target roles.</li>
+                                                    <li>Explainability-first design matching academic rigor.</li>
+                                                    <li>Decoupled architecture: Research execution vs Runtime APIs.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Architecture -->
+                        <div id="tab-architecture" class="tab-pane">
+                            <div class="box-panel">
+                                <h3>System Architecture</h3>
+                                <p class="text-sm" style="margin-bottom: 20px; color:#9ca3af;">High-level overview of the UniFinder distributed modular architecture.</p>
+                                
+                                <div class="arch-diagram">
+                                    <!-- Layer 1 -->
+                                    <div class="arch-layer ui-layer">
+                                        <div class="layer-title">USER INTERFACE LAYER</div>
+                                        <div class="layer-boxes">
+                                            <div class="arch-box">Web Dashboard</div>
+                                            <div class="arch-box">Mobile App</div>
+                                            <div class="arch-box">React Frontend</div>
+                                            <div class="arch-box">Interactive Dashboard</div>
+                                            <div class="arch-box">API Endpoints</div>
+                                            <div class="arch-box">Reports & Analytics</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="arch-arrow">↓</div>
+                                    
+                                    <!-- Layer 2 -->
+                                    <div class="arch-layer orch-layer">
+                                        <div class="layer-title">CENTRAL ORCHESTRATION LAYER</div>
+                                        <div class="layer-boxes">
+                                            <div class="arch-box">API Gateway</div>
+                                            <div class="arch-box">Load Balancer</div>
+                                            <div class="arch-box">Result Aggregation</div>
+                                            <div class="arch-box">User Authentication</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="arch-arrow">↓</div>
+                                    
+                                    <!-- Layer 3 Modules -->
+                                    <div class="arch-modules">
+                                        <div class="arch-module border-purple">
+                                            <div class="mod-title">Degree Recommendation</div>
+                                            <div class="mod-author">Kaweeshwara IT22641960</div>
+                                            <div class="mod-content">Hybrid ML Models • Z-Score Filtering • MCDM Ranking • Explainability • UGC Admission Data</div>
+                                        </div>
+                                        <div class="arch-module border-green">
+                                            <div class="mod-title">Student Budget Optimizer</div>
+                                            <div class="mod-author">Dilshan IT22347862</div>
+                                            <div class="mod-content">Linear Regression Forecasting • Real-time Cost Integration • Budget Generation • Progress Tracking</div>
+                                        </div>
+                                        <div class="arch-module border-blue">
+                                            <div class="mod-title">Scholarship Matcher</div>
+                                            <div class="mod-author">Hettiarachchi IT22627650</div>
+                                            <div class="mod-content">Eligibility Prediction • Success Scoring • Deadline Alerts • Fraud Detection</div>
+                                        </div>
+                                        <div class="arch-module border-orange">
+                                            <div class="mod-title">Career Outcome Predictor</div>
+                                            <div class="mod-author">Siriwardana IT22627100</div>
+                                            <div class="mod-content">IT Career Mapping • Skill Gap Analysis • Job Role Progression • Personalized Roadmaps</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="arch-arrow">↓</div>
+                                    
+                                    <!-- Layer 4 Sources -->
+                                    <div class="arch-layer data-layer">
+                                        <div class="layer-title">SHARED DATA SOURCES & INTEGRATION LAYER</div>
+                                        <div class="layer-boxes wrap">
+                                            <div class="arch-box sm">UGC Data</div>
+                                            <div class="arch-box sm">Cost-of-Living APIs</div>
+                                            <div class="arch-box sm">Banking DBs</div>
+                                            <div class="arch-box sm">Labor Market Stats</div>
+                                            <div class="arch-box sm">Univ. Brochures</div>
+                                            <div class="arch-box sm">Student Surveys</div>
+                                            <div class="arch-box sm">ICTA Skill Data</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="arch-arrow">↓</div>
+                                    
+                                    <!-- Layer 5 DBs -->
+                                    <div class="arch-layer db-layer">
+                                        <div class="layer-title">SHARED CLOUD DATABASE LAYER</div>
+                                        <div class="layer-boxes">
+                                            <div class="arch-box">MongoDB</div>
+                                            <div class="arch-box">PostgreSQL</div>
+                                            <div class="arch-box">Redis Cache</div>
+                                            <div class="arch-box dark">Data Std. & Cleaning</div>
+                                            <div class="arch-box dark">Continuous ML</div>
+                                            <div class="arch-box dark">Backup & Recovery</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tech Stack -->
+                        <div id="tab-tech" class="tab-pane">
+                            <div class="box-panel">
+                                <h3>Technologies Used</h3>
+                                
+                                <div class="tech-category">
+                                    <h4>Backend</h4>
+                                    <div class="tech-badges">
+                                        <span class="badge tech">Python</span>
+                                        <span class="badge tech">FastAPI</span>
+                                        <span class="badge tech">Node.js</span>
+                                        <span class="badge tech">Express.js</span>
+                                        <span class="badge tech">Flask</span>
+                                        <span class="badge tech">PostgreSQL</span>
+                                        <span class="badge tech">MongoDB</span>
+                                        <span class="badge tech">Redis</span>
+                                        <span class="badge tech">Celery</span>
+                                    </div>
+                                </div>
+                                <div class="tech-category">
+                                    <h4>Frontend</h4>
+                                    <div class="tech-badges">
+                                        <span class="badge tech">React.js</span>
+                                        <span class="badge tech">TypeScript</span>
+                                        <span class="badge tech">React Native</span>
+                                        <span class="badge tech">Tailwind CSS</span>
+                                        <span class="badge tech">Redux</span>
+                                    </div>
+                                </div>
+                                <div class="tech-category">
+                                    <h4>AI / ML Technologies</h4>
+                                    <div class="tech-badges">
+                                        <span class="badge tech">scikit-learn</span>
+                                        <span class="badge tech">TensorFlow</span>
+                                        <span class="badge tech">Pandas</span>
+                                        <span class="badge tech">NumPy</span>
+                                        <span class="badge tech">NLTK</span>
+                                        <span class="badge tech">Sentence-BERT</span>
+                                        <span class="badge tech">Gradient Boosting</span>
+                                        <span class="badge tech">Gemini 2.0</span>
+                                        <span class="badge tech">TF-IDF</span>
+                                        <span class="badge tech">KNN</span>
+                                    </div>
+                                </div>
+                                <div class="tech-category">
+                                    <h4>Infrastructure & DevOps</h4>
+                                    <div class="tech-badges">
+                                        <span class="badge tech">Docker</span>
+                                        <span class="badge tech">Kubernetes</span>
+                                        <span class="badge tech">AWS</span>
+                                        <span class="badge tech">GCP</span>
+                                        <span class="badge tech">GitHub Actions</span>
+                                        <span class="badge tech">Prometheus</span>
+                                        <span class="badge tech">Grafana</span>
+                                        <span class="badge tech">Selenium</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. MILESTONES -->
+        <section id="milestones" class="section">
+            <div class="container reveal">
+                <h2 class="section-title text-center">Project Milestones</h2>
+                
+                <div class="timeline">
+                    <!-- 1 -->
+                    <div class="timeline-item left completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Project Proposal Presentation & Report</h3>
+                            <div class="timeline-date">July 2025</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 12% <span>✅ COMPLETED</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="timeline-item right completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Progress Presentation I</h3>
+                            <div class="timeline-date">TBD</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 15% <span>✅ COMPLETED</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="timeline-item left completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Progress Presentation II</h3>
+                            <div class="timeline-date">TBD</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 18% <span>✅ COMPLETED</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="timeline-item right pending">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Research Paper</h3>
+                            <div class="timeline-date">TBD</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 10% <span>🔄 Upcoming</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="timeline-item left pending">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>References & Citations</h3>
+                            <div class="timeline-date">TBD</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 2% <span>🔄 Upcoming</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="timeline-item right pending">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Final Presentation & VIVA</h3>
+                            <div class="timeline-date">TBD</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 20% <span>🔄 Upcoming</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="timeline-item left pending">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Research Logbook & Status Documents 1 & 2</h3>
+                            <div class="timeline-date">TBD</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 4% <span>🔄 Upcoming</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="timeline-item right pending">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Final Report</h3>
+                            <div class="timeline-date">TBD</div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Marks: 19% <span>🔄 Upcoming</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DOCUMENTS -->
+        <section id="documents" class="section">
+            <div class="container reveal">
+                <h2 class="section-title">Project Documents</h2>
+                
+                <h3 class="doc-category-title">Group Documents</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">📄</div>
+                        <div class="doc-info">
+                            <h4>Project Charter</h4>
+                            <p>Group 25-26J-494</p>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Document</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📊</div>
+                        <div class="doc-info">
+                            <h4>Proposal Presentation Slides</h4>
+                            <p>Group 25-26J-494</p>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Document</a>
+                    </div>
+                </div>
+
+                <h3 class="doc-category-title">Individual Proposal Documents</h3>
+                <div class="doc-grid">
+                    <div class="doc-card border-purple">
+                        <div class="doc-icon">🎯</div>
+                        <div class="doc-info">
+                            <h4>Proposal Document</h4>
+                            <p>IT22641960 - Degree Recommendation</p>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Document</a>
+                    </div>
+                    <div class="doc-card border-green">
+                        <div class="doc-icon">💰</div>
+                        <div class="doc-info">
+                            <h4>Proposal Document</h4>
+                            <p>IT22347862 - Budget Optimizer</p>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Document</a>
+                    </div>
+                    <div class="doc-card border-blue">
+                        <div class="doc-icon">🏆</div>
+                        <div class="doc-info">
+                            <h4>Proposal Document</h4>
+                            <p>IT22627650 - Scholarship Matcher</p>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Document</a>
+                    </div>
+                    <div class="doc-card border-orange">
+                        <div class="doc-icon">📈</div>
+                        <div class="doc-info">
+                            <h4>Proposal Document</h4>
+                            <p>IT22627100 - Career Predictor</p>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-sm">View Document</a>
+                    </div>
+                </div>
+
+                <div class="grid-2-col" style="margin-top: 30px;">
+                    <div>
+                        <h3 class="doc-category-title">Status Documents</h3>
+                        <div class="doc-grid-small">
+                            <div class="doc-card-small">
+                                <div><strong>Status Document 1</strong><br><span class="text-xs">x4 Members</span></div>
+                                <a href="#" class="btn btn-outline btn-xs">View</a>
+                            </div>
+                            <div class="doc-card-small pending-overlay">
+                                <div><strong>Status Document 2</strong><br><span class="text-xs">x4 Members</span></div>
+                                <div class="badge-soon">Coming Soon</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="doc-category-title">Progress Reports</h3>
+                        <div class="doc-grid-small">
+                            <div class="doc-card-small pending-overlay">
+                                <div><strong>Progress Report 1</strong><br><span class="text-xs">x4 Members</span></div>
+                                <div class="badge-soon">Coming Soon</div>
+                            </div>
+                            <div class="doc-card-small pending-overlay">
+                                <div><strong>Final Report</strong><br><span class="text-xs">x4 Members</span></div>
+                                <div class="badge-soon">Coming Soon</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. PRESENTATIONS -->
+        <section id="presentations" class="section">
+            <div class="container reveal">
+                <h2 class="section-title">Presentations</h2>
+                
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon text-cyan">📽️</div>
+                        <div class="doc-info">
+                            <h4>Proposal Presentation</h4>
+                            <p>Group Level</p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm">Watch Video</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon text-cyan">📽️</div>
+                        <div class="doc-info">
+                            <h4>Progress Presentation 1</h4>
+                            <p>Group Level</p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm">Watch Video</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon text-cyan">📽️</div>
+                        <div class="doc-info">
+                            <h4>Progress Presentation 2</h4>
+                            <p>Group Level</p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm">Watch Video</a>
+                    </div>
+                    <div class="doc-card pending-overlay">
+                        <div class="doc-icon text-gray">📽️</div>
+                        <div class="doc-info">
+                            <h4>Final Presentation</h4>
+                            <p>Group Level - Pending</p>
+                        </div>
+                        <div class="badge-soon" style="position:relative; right:0; top:0;">Pending</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ABOUT US -->
+        <section id="about" class="section">
+            <div class="container reveal">
+                <h2 class="section-title text-center">Meet the Team</h2>
+                <p class="text-center text-lg mb-4" style="color:var(--text-muted);">Research Group 25-26J-494 | SLIIT Faculty of Computing</p>
+                
+                <div class="team-grid">
+                    <!-- Member 1 -->
+                    <div class="team-card">
+                        <div class="avatar bg-grad-purple">KK</div>
+                        <h4 class="member-title">Kaweeshwara K.A.Y.P</h4>
+                        <div class="member-id">IT22641960</div>
+                        <div class="member-badge border-purple color-purple">Degree Recommendation</div>
+                        <p class="member-role">Undergraduate Researcher</p>
+                        <a href="mailto:it22641960@my.sliit.lk" class="member-email">Contact</a>
+                    </div>
+                    
+                    <!-- Member 2 -->
+                    <div class="team-card">
+                        <div class="avatar bg-grad-green">DW</div>
+                        <h4 class="member-title">Dilshan W.P.S.S</h4>
+                        <div class="member-id">IT22347862</div>
+                        <div class="member-badge border-green color-green">Budget Optimizer</div>
+                        <p class="member-role">Undergraduate Researcher</p>
+                        <a href="mailto:it22347862@my.sliit.lk" class="member-email">Contact</a>
+                    </div>
+                    
+                    <!-- Member 3 Primary -->
+                    <div class="team-card">
+                        <div class="avatar bg-grad-blue">HH</div>
+                        <h4 class="member-title">Hettiarachchi H.D.R.T</h4>
+                        <div class="member-id">IT22627650</div>
+                        <div class="member-badge border-blue color-blue">Scholarship Matcher</div>
+                        <p class="member-role">Undergraduate Researcher</p>
+                        <a href="mailto:it22627650@my.sliit.lk" class="member-email">Contact</a>
+                    </div>
+                    
+                    <!-- Member 4 -->
+                    <div class="team-card">
+                        <div class="avatar bg-grad-orange">SN</div>
+                        <h4 class="member-title">Siriwardana N.D.V.S</h4>
+                        <div class="member-id">IT22627100</div>
+                        <div class="member-badge border-orange color-orange">Career Predictor</div>
+                        <p class="member-role">Undergraduate Researcher</p>
+                        <a href="mailto:it22627100@my.sliit.lk" class="member-email">Contact</a>
+                    </div>
+                </div>
+
+                <div class="supervisors-box mt-4 box-panel text-center">
+                    <h3>Project Supervisors</h3>
+                    <div class="supervisor-list">
+                        <div class="supervisor-item">
+                            <h5>Ms. Thamali Dassanayake</h5>
+                            <p>Primary Supervisor, SLIIT</p>
+                        </div>
+                        <div class="supervisor-item">
+                            <h5>Ms. Chamali Pabasara</h5>
+                            <p>Co-Supervisor, SLIIT</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commercialization-box mt-4 box-panel">
+                    <h3>Commercialization Potential</h3>
+                    <ul class="bullet-list-grid">
+                        <li><strong>Market:</strong> 400,000+ potential users annually in Sri Lanka alone.</li>
+                        <li><strong>Model:</strong> Freemium access for students, Institutional Partnerships, Sponsored Listings.</li>
+                        <li><strong>Unique Selling Proposition:</strong> First centralized platform combining academic, financial, and career guidance tailored to local constraints.</li>
+                        <li><strong>Expansion:</strong> Easily scalable to regional markets such as Bangladesh, Nepal, and Pakistan (5M+ students).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CONTACT -->
+        <section id="contact" class="section">
+            <div class="container reveal">
+                <h2 class="section-title text-center">Contact Us</h2>
+                
+                <div class="grid-2-col align-start">
+                    <div class="contact-info box-panel">
+                        <h3>Get in Touch</h3>
+                        <p>We are building the future of educational guidance in Sri Lanka. Contact us for inquiries regarding our research.</p>
+                        
+                        <div class="contact-item">
+                            <span class="c-icon">📍</span>
+                            <div>
+                                <strong>Location</strong>
+                                <p>SLIIT, Faculty of Computing<br>Department of Software Engineering<br>Malabe, Sri Lanka.</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="c-icon">🔖</span>
+                            <div>
+                                <strong>Project Code</strong>
+                                <p>25-26J-494</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="c-icon">📧</span>
+                            <div>
+                                <strong>Email</strong>
+                                <p>unifinder.sliit@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form box-panel">
+                        <form onsubmit="event.preventDefault();">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" placeholder="Inquiry about UniFinder" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" placeholder="Your message here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <h3>UniFinder</h3>
+                <p>Empowering Sri Lankan youth with AI-driven academic navigation.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#domain">Research Domain</a>
+                <a href="#milestones">Milestones</a>
+                <a href="#about">About Team</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UniFinder (Group 25-26J-494). SLIIT Undergraduate Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+
+</body>
+</html>
