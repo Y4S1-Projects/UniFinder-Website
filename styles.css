@@ -1138,6 +1138,29 @@ footer {
     color: var(--text-muted);
     font-size: 0.8rem;
 }
+.search-result-header {
+    padding: 8px 15px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.search-result-more {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+    cursor: default;
+}
+.search-result-more:hover {
+    background: none;
+}
+.search-result-item mark {
+    background: transparent;
+    color: var(--color-cyan);
+    font-weight: 700;
+}
 
 /* Back To Top Button */
 .back-to-top {

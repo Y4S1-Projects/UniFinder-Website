@@ -198,65 +198,196 @@ document.addEventListener('DOMContentLoaded', () => {
         animateNetwork();
     }
 
-    /* --- 7. Search Feature --- */
-    const searchIndex = [
-        { title: "Degree Recommendation System", link: "#domain", keywords: "degree recommendation z-score eligibility kaweeshwara rules ai" },
-        { title: "Student Budget Optimizer", link: "#domain", keywords: "budget optimizer finance cost savings dilshan prediction regression" },
-        { title: "Scholarship & Financial Aid Matcher", link: "#domain", keywords: "scholarship loan financial aid matcher hettiarachchi eligibility" },
-        { title: "Career Outcome Predictor", link: "#domain", keywords: "career outcome predictor skill gap job siriwardana guidance" },
-        { title: "Research Gap Analysis", link: "#domain", keywords: "gap comparison table features" },
-        { title: "Methodology Details", link: "#domain", keywords: "methodology solutions testing performance accuracy" },
-        { title: "System Architecture", link: "#domain", keywords: "architecture diagram layer module structure ui backend" },
-        { title: "Technologies Used", link: "#domain", keywords: "technologies stack python react frontend backend infrastructure devops" },
-        { title: "Project Milestones", link: "#milestones", keywords: "milestones progress timeline presentation report viva" },
-        { title: "Project Documents", link: "#documents", keywords: "documents proposal charter status report slides pdf" },
-        { title: "Meet the Team", link: "#about", keywords: "team about members supervisors commercialization sliit" },
-        { title: "Contact Information", link: "#contact", keywords: "contact email location phone address send message form" }
-    ];
+    /* --- 7. Enhanced Dynamic Search Feature --- */
+    const sectionMeta = {
+        home:          { link: '#home',          label: 'Home' },
+        domain:        { link: '#domain',        label: 'Research Domain' },
+        milestones:    { link: '#milestones',    label: 'Milestones' },
+        documents:     { link: '#documents',     label: 'Documents' },
+        presentations: { link: '#presentations', label: 'Presentations' },
+        about:         { link: '#about',         label: 'About Us' },
+        contact:       { link: '#contact',       label: 'Contact' }
+    };
+    const tabLabels = {
+        'tab-background': 'Background',
+        'tab-gap':        'Research Gap',
+        'tab-problem':    'Problem & Objectives',
+        'tab-methodology':'Methodology',
+        'tab-architecture':'Architecture',
+        'tab-tech':       'Technologies'
+    };
+    const subTabLabels = {
+        member1: 'Degree Recommendation',
+        member2: 'Budget Optimizer',
+        member3: 'Scholarship & Loan',
+        member4: 'Career Predictor'
+    };
 
-    const searchInput = document.getElementById('searchInput');
+    function getAncestor(el, selector) {
+        let cur = el;
+        while (cur && cur !== document.body) {
+            if (cur.matches && cur.matches(selector)) return cur;
+            cur = cur.parentElement;
+        }
+        return null;
+    }
+
+    function buildSearchIndex() {
+        const index = [];
+        const seen = new Set();
+        const selectors = [
+            'h1','h2','h3','h4','h5',
+            'p','li','td','th',
+            '.badge','.arch-box','.mod-title','.mod-content',
+            '.stat-label','.stat-number','.member-title','.member-id',
+            '.doc-info h4','.doc-info p','.timeline-content h3',
+            '.diff-item h5','.diff-item p','.supervisor-item h5',
+            '.tech-badges .badge','label'
+        ];
+
+        document.querySelectorAll(selectors.join(',')).forEach(el => {
+            if (el.closest('nav') || el.closest('footer')) return;
+            const text = el.textContent.trim();
+            if (!text || text.length < 3) return;
+
+            const section = getAncestor(el, 'section');
+            if (!section || !sectionMeta[section.id]) return;
+
+            const tabPane    = getAncestor(el, '.tab-pane');
+            const subTabPane = getAncestor(el, '.sub-tab-pane');
+
+            const tabId    = tabPane    ? tabPane.id    : null;
+            const subTabId = subTabPane ? subTabPane.id : null;
+
+            let breadcrumb = sectionMeta[section.id].label;
+            if (tabId    && tabLabels[tabId])    breadcrumb += ' › ' + tabLabels[tabId];
+            if (subTabId && subTabLabels[subTabId]) breadcrumb += ' › ' + subTabLabels[subTabId];
+
+            const key = section.id + '|' + (tabId||'') + '|' + (subTabId||'') + '|' + text.slice(0, 80);
+            if (seen.has(key)) return;
+            seen.add(key);
+
+            index.push({ text, section: section.id, link: sectionMeta[section.id].link, tabId, subTabId, breadcrumb });
+        });
+        return index;
+    }
+
+    let dynamicIndex = [];
+    setTimeout(() => { dynamicIndex = buildSearchIndex(); }, 200);
+
+    const searchInput   = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
+    const searchBtn     = document.getElementById('searchBtn');
 
-    if (searchInput && searchResults) {
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            searchResults.innerHTML = '';
-            
-            if (query.length < 2) {
-                searchResults.classList.remove('active');
-                return;
-            }
+    function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
-            const results = searchIndex.filter(item => {
-                return item.title.toLowerCase().includes(query) || 
-                       item.keywords.toLowerCase().includes(query);
+    function highlightTerms(text, terms) {
+        const pattern = new RegExp(`(${terms.map(escapeRegex).join('|')})`, 'gi');
+        return text.replace(pattern, '<mark>$1</mark>');
+    }
+
+    function runSearch(rawQuery) {
+        searchResults.innerHTML = '';
+        const query = rawQuery.toLowerCase().trim();
+        if (query.length < 2) { searchResults.classList.remove('active'); return; }
+
+        const terms = query.split(/\s+/).filter(t => t.length > 0);
+        const seen  = new Set();
+        const scored = [];
+
+        dynamicIndex.forEach(item => {
+            const lower = item.text.toLowerCase();
+            let score = 0;
+            terms.forEach(term => {
+                if (lower === term)            score += 12;
+                else if (lower.startsWith(term)) score += 7;
+                else if (lower.includes(term))   score += 3;
             });
+            if (score === 0) return;
 
-            if (results.length > 0) {
-                results.forEach(res => {
-                    const div = document.createElement('div');
-                    div.className = 'search-result-item';
-                    div.innerHTML = `<div class="search-result-title">${res.title}</div>
-                                     <div class="search-result-context">Navigate to section</div>`;
-                    div.addEventListener('click', () => {
-                        window.location.hash = res.link;
-                        searchResults.classList.remove('active');
-                        searchInput.value = '';
-                    });
-                    searchResults.appendChild(div);
-                });
-            } else {
-                const div = document.createElement('div');
-                div.className = 'search-result-item';
-                div.innerHTML = `<div class="search-result-context">No results found for "${query}"</div>`;
-                searchResults.appendChild(div);
-            }
-            searchResults.classList.add('active');
+            const dedupeKey = item.section + '|' + item.tabId + '|' + item.text.slice(0, 60);
+            if (seen.has(dedupeKey)) return;
+            seen.add(dedupeKey);
+            scored.push({ ...item, score });
         });
 
-        // Close search results when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        scored.sort((a, b) => b.score - a.score);
+        const top = scored.slice(0, 8);
+
+        if (top.length > 0) {
+            const hdr = document.createElement('div');
+            hdr.className = 'search-result-header';
+            hdr.textContent = `${scored.length} result${scored.length !== 1 ? 's' : ''} found`;
+            searchResults.appendChild(hdr);
+
+            top.forEach(res => {
+                const div = document.createElement('div');
+                div.className = 'search-result-item';
+                const display   = res.text.length > 80 ? res.text.slice(0, 80) + '\u2026' : res.text;
+                const highlighted = highlightTerms(display, terms);
+                div.innerHTML = `<div class="search-result-title">${highlighted}</div>
+                                 <div class="search-result-context">${res.breadcrumb}</div>`;
+
+                div.addEventListener('click', () => {
+                    // Activate correct tab first (so section has correct height)
+                    if (res.tabId) {
+                        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                        const btn  = document.querySelector(`[data-target="${res.tabId}"]`);
+                        const pane = document.getElementById(res.tabId);
+                        if (btn)  btn.classList.add('active');
+                        if (pane) pane.classList.add('active');
+                    }
+                    if (res.subTabId) {
+                        document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+                        document.querySelectorAll('.sub-tab-pane').forEach(p => p.classList.remove('active'));
+                        const btn  = document.querySelector(`[data-subtarget="${res.subTabId}"]`);
+                        const pane = document.getElementById(res.subTabId);
+                        if (btn)  btn.classList.add('active');
+                        if (pane) pane.classList.add('active');
+                    }
+                    // Scroll to section
+                    const target = document.querySelector(res.link);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    searchResults.classList.remove('active');
+                    searchInput.value = '';
+                });
+                searchResults.appendChild(div);
+            });
+
+            if (scored.length > 8) {
+                const more = document.createElement('div');
+                more.className = 'search-result-item search-result-more';
+                more.textContent = `+${scored.length - 8} more — refine your query`;
+                searchResults.appendChild(more);
+            }
+        } else {
+            const div = document.createElement('div');
+            div.className = 'search-result-item';
+            div.innerHTML = `<div class="search-result-context">No results for "<strong>${query}</strong>"</div>`;
+            searchResults.appendChild(div);
+        }
+        searchResults.classList.add('active');
+    }
+
+    if (searchInput && searchResults) {
+        searchInput.addEventListener('input',   e => runSearch(e.target.value));
+        searchInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                const first = searchResults.querySelector('.search-result-item');
+                if (first) first.click();
+            }
+            if (e.key === 'Escape') {
+                searchResults.classList.remove('active');
+                searchInput.blur();
+            }
+        });
+        if (searchBtn) {
+            searchBtn.addEventListener('click', () => runSearch(searchInput.value));
+        }
+        document.addEventListener('click', e => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target) && !(searchBtn && searchBtn.contains(e.target))) {
                 searchResults.classList.remove('active');
             }
         });
